@@ -1,17 +1,17 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { IGlobalError } from "@/types";
-import { AlertTriangle } from "lucide-react";
+'use client';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { IGlobalError } from '@/types';
+import { AlertTriangle } from 'lucide-react';
 
 const GlobalError = ({ error, reset }: IGlobalError) => {
   return (
-    <section className="grid place-items-center h-screen ">
+    <section className="grid h-screen place-items-center">
       <Card
-        className="w-full max-w-lg rounded-2xl shadow-xl "
+        className="w-full max-w-lg rounded-2xl shadow-xl"
         data-aos="fade-up"
       >
-        <CardContent className="p-10 text-center space-y-6">
+        <CardContent className="space-y-6 p-10 text-center">
           {/* Error Icon */}
           <div className="flex justify-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-100">
@@ -26,7 +26,7 @@ const GlobalError = ({ error, reset }: IGlobalError) => {
 
           {/* Message */}
           <p className="text-gray-600">
-            {error.message || "An unexpected error occurred. Please try again."}
+            {error.message || 'An unexpected error occurred. Please try again.'}
           </p>
 
           {/* Action */}

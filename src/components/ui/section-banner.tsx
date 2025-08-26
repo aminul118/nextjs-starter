@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 
 type SectionBannerProps = {
   title?: string;
@@ -18,13 +18,13 @@ const SectionBanner: React.FC<SectionBannerProps> = ({
   return (
     <div
       className={cn(
-        "relative flex h-64 w-full items-center justify-center bg-cover bg-center",
-        className
+        'relative flex h-64 w-full items-center justify-center bg-cover bg-center',
+        className,
       )}
       style={{
         backgroundImage: backgroundImagePath
           ? `url('${backgroundImagePath}')`
-          : "none",
+          : 'none',
       }}
     >
       {backgroundImagePath && overlay && (

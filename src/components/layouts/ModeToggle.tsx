@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useEffect, useId, useState } from "react";
-import { MoonIcon, SunIcon } from "lucide-react";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { useTheme } from "next-themes";
+import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
+import { MoonIcon, SunIcon } from 'lucide-react';
+import { useTheme } from 'next-themes';
+import { useEffect, useId, useState } from 'react';
 
 const ModeToggle = () => {
   const id = useId();
@@ -13,7 +13,7 @@ const ModeToggle = () => {
 
   // Apply theme when checked changes
   useEffect(() => {
-    setTheme(checked ? "dark" : "light");
+    setTheme(checked ? 'dark' : 'light');
   }, [checked, setTheme]);
 
   return (

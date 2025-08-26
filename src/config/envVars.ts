@@ -8,7 +8,7 @@ const getEnv = (key: string): string => {
 };
 
 const envVars = {
-  ENV: getEnv("NEXT_PUBLIC_ENV"),
+  ENV: getEnv('NEXT_PUBLIC_ENV'),
 };
 
 export default envVars;

@@ -1,10 +1,10 @@
-import Footer from "@/components/layouts/Footer/Footer";
-import Navbar from "@/components/layouts/Navbar/Navbar";
-import { IChildren } from "@/types";
+import Footer from '@/components/layouts/Footer/Footer';
+import Navbar from '@/components/layouts/Navbar/Navbar';
+import { IChildren } from '@/types';
 
 const PublicLayout = ({ children }: IChildren) => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex min-h-screen flex-col">
       <Navbar />
       <main className="flex-grow">{children}</main>
       <Footer />

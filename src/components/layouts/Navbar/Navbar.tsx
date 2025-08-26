@@ -1,8 +1,7 @@
-import { BookOpenIcon, InfoIcon, LifeBuoyIcon } from "lucide-react";
+import { BookOpenIcon, InfoIcon, LifeBuoyIcon } from 'lucide-react';
 
-import Logo from "@/components/layouts/logo";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import Logo from '@/components/layouts/logo';
+import { Button } from '@/components/ui/button';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,58 +9,59 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
+} from '@/components/ui/navigation-menu';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import ModeToggle from "../ModeToggle";
+} from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
+import ModeToggle from '../ModeToggle';
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
-  { href: "#", label: "Home" },
+  { href: '#', label: 'Home' },
   {
-    label: "Features",
+    label: 'Features',
     submenu: true,
-    type: "description",
+    type: 'description',
     items: [
       {
-        href: "#",
-        label: "Components",
-        description: "Browse all components in the library.",
+        href: '#',
+        label: 'Components',
+        description: 'Browse all components in the library.',
       },
       {
-        href: "#",
-        label: "Documentation",
-        description: "Learn how to use the library.",
+        href: '#',
+        label: 'Documentation',
+        description: 'Learn how to use the library.',
       },
       {
-        href: "#",
-        label: "Templates",
-        description: "Pre-built layouts for common use cases.",
+        href: '#',
+        label: 'Templates',
+        description: 'Pre-built layouts for common use cases.',
       },
     ],
   },
   {
-    label: "Pricing",
+    label: 'Pricing',
     submenu: true,
-    type: "simple",
+    type: 'simple',
     items: [
-      { href: "#", label: "Product A" },
-      { href: "#", label: "Product B" },
-      { href: "#", label: "Product C" },
-      { href: "#", label: "Product D" },
+      { href: '#', label: 'Product A' },
+      { href: '#', label: 'Product B' },
+      { href: '#', label: 'Product C' },
+      { href: '#', label: 'Product D' },
     ],
   },
   {
-    label: "About",
+    label: 'About',
     submenu: true,
-    type: "icon",
+    type: 'icon',
     items: [
-      { href: "#", label: "Getting Started", icon: "BookOpenIcon" },
-      { href: "#", label: "Tutorials", icon: "LifeBuoyIcon" },
-      { href: "#", label: "About Us", icon: "InfoIcon" },
+      { href: '#', label: 'Getting Started', icon: 'BookOpenIcon' },
+      { href: '#', label: 'Tutorials', icon: 'LifeBuoyIcon' },
+      { href: '#', label: 'About Us', icon: 'InfoIcon' },
     ],
   },
 ];
@@ -69,7 +69,7 @@ const navigationLinks = [
 const Navbar = () => {
   return (
     <header className="border-b px-4 md:px-6">
-      <div className="flex h-16 items-center justify-between gap-4 container mx-auto">
+      <div className="container mx-auto flex h-16 items-center justify-between gap-4">
         {/* Left side */}
         <div className="flex items-center gap-2">
           {/* Mobile menu trigger */}
@@ -177,9 +177,9 @@ const Navbar = () => {
                         <NavigationMenuContent className="data-[motion=from-end]:slide-in-from-right-16! data-[motion=from-start]:slide-in-from-left-16! data-[motion=to-end]:slide-out-to-right-16! data-[motion=to-start]:slide-out-to-left-16! z-50 p-1">
                           <ul
                             className={cn(
-                              link.type === "description"
-                                ? "min-w-64"
-                                : "min-w-48"
+                              link.type === 'description'
+                                ? 'min-w-64'
+                                : 'min-w-48',
                             )}
                           >
                             {link.items.map((item, itemIndex) => (
@@ -189,23 +189,23 @@ const Navbar = () => {
                                   className="py-1.5"
                                 >
                                   {/* Display icon if present */}
-                                  {link.type === "icon" && "icon" in item && (
+                                  {link.type === 'icon' && 'icon' in item && (
                                     <div className="flex items-center gap-2">
-                                      {item.icon === "BookOpenIcon" && (
+                                      {item.icon === 'BookOpenIcon' && (
                                         <BookOpenIcon
                                           size={16}
                                           className="text-foreground opacity-60"
                                           aria-hidden="true"
                                         />
                                       )}
-                                      {item.icon === "LifeBuoyIcon" && (
+                                      {item.icon === 'LifeBuoyIcon' && (
                                         <LifeBuoyIcon
                                           size={16}
                                           className="text-foreground opacity-60"
                                           aria-hidden="true"
                                         />
                                       )}
-                                      {item.icon === "InfoIcon" && (
+                                      {item.icon === 'InfoIcon' && (
                                         <InfoIcon
                                           size={16}
                                           className="text-foreground opacity-60"
@@ -217,8 +217,8 @@ const Navbar = () => {
                                   )}
 
                                   {/* Display label with description if present */}
-                                  {link.type === "description" &&
-                                  "description" in item ? (
+                                  {link.type === 'description' &&
+                                  'description' in item ? (
                                     <div className="space-y-1">
                                       <div className="font-medium">
                                         {item.label}
@@ -230,8 +230,8 @@ const Navbar = () => {
                                   ) : (
                                     // Display simple label if not icon or description type
                                     !link.type ||
-                                    (link.type !== "icon" &&
-                                      link.type !== "description" && (
+                                    (link.type !== 'icon' &&
+                                      link.type !== 'description' && (
                                         <span>{item.label}</span>
                                       ))
                                   )}

@@ -1,5 +1,5 @@
-export type { IChildren, IParams, IGlobalError } from "./react.types";
-export type { MetaProps, Routes } from "./meta.types";
+export type { MetaProps, Routes } from './meta.types';
+export type { IChildren, IGlobalError, IParams } from './react.types';
 
 export interface ApiResponse<T> {
   message: string;

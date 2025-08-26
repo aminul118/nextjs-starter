@@ -1,6 +1,6 @@
-"use client";
-import Container from "@/components/ui/container";
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+'use client';
+import Container from '@/components/ui/container';
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 interface Footer7Props {
   logo?: {
@@ -28,57 +28,57 @@ interface Footer7Props {
 
 const defaultSections = [
   {
-    title: "Product",
+    title: 'Product',
     links: [
-      { name: "Overview", href: "#" },
-      { name: "Pricing", href: "#" },
-      { name: "Marketplace", href: "#" },
-      { name: "Features", href: "#" },
+      { name: 'Overview', href: '#' },
+      { name: 'Pricing', href: '#' },
+      { name: 'Marketplace', href: '#' },
+      { name: 'Features', href: '#' },
     ],
   },
   {
-    title: "Company",
+    title: 'Company',
     links: [
-      { name: "About", href: "#" },
-      { name: "Team", href: "#" },
-      { name: "Blog", href: "#" },
-      { name: "Careers", href: "#" },
+      { name: 'About', href: '#' },
+      { name: 'Team', href: '#' },
+      { name: 'Blog', href: '#' },
+      { name: 'Careers', href: '#' },
     ],
   },
   {
-    title: "Resources",
+    title: 'Resources',
     links: [
-      { name: "Help", href: "#" },
-      { name: "Sales", href: "#" },
-      { name: "Advertise", href: "#" },
-      { name: "Privacy", href: "#" },
+      { name: 'Help', href: '#' },
+      { name: 'Sales', href: '#' },
+      { name: 'Advertise', href: '#' },
+      { name: 'Privacy', href: '#' },
     ],
   },
 ];
 
 const defaultSocialLinks = [
-  { icon: <FaInstagram className="size-5" />, href: "#", label: "Instagram" },
-  { icon: <FaFacebook className="size-5" />, href: "#", label: "Facebook" },
-  { icon: <FaTwitter className="size-5" />, href: "#", label: "Twitter" },
-  { icon: <FaLinkedin className="size-5" />, href: "#", label: "LinkedIn" },
+  { icon: <FaInstagram className="size-5" />, href: '#', label: 'Instagram' },
+  { icon: <FaFacebook className="size-5" />, href: '#', label: 'Facebook' },
+  { icon: <FaTwitter className="size-5" />, href: '#', label: 'Twitter' },
+  { icon: <FaLinkedin className="size-5" />, href: '#', label: 'LinkedIn' },
 ];
 
 const defaultLegalLinks = [
-  { name: "Terms and Conditions", href: "#" },
-  { name: "Privacy Policy", href: "#" },
+  { name: 'Terms and Conditions', href: '#' },
+  { name: 'Privacy Policy', href: '#' },
 ];
 
 const Footer = ({
   logo = {
-    url: "https://www.shadcnblocks.com",
-    src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
-    alt: "logo",
-    title: "Shadcnblocks.com",
+    url: 'https://www.shadcnblocks.com',
+    src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg',
+    alt: 'logo',
+    title: 'Shadcnblocks.com',
   },
   sections = defaultSections,
-  description = "A collection of components for your startup business or side project.",
+  description = 'A collection of components for your startup business or side project.',
   socialLinks = defaultSocialLinks,
-  copyright = "© 2024 Shadcnblocks.com. All rights reserved.",
+  copyright = '© 2024 Shadcnblocks.com. All rights reserved.',
   legalLinks = defaultLegalLinks,
 }: Footer7Props) => {
   return (
@@ -125,7 +125,7 @@ const Footer = ({
           ))}
         </div>
       </div>
-      <div className="text-muted-foreground mt-8 flex flex-col justify-between gap-4 border-t py-8 text-xs font-medium md:flex-row md:items-center md:text-left ">
+      <div className="text-muted-foreground mt-8 flex flex-col justify-between gap-4 border-t py-8 text-xs font-medium md:flex-row md:items-center md:text-left">
         <p className="order-2 lg:order-1">{copyright}</p>
         <ul className="order-1 flex flex-col gap-2 md:order-2 md:flex-row">
           {legalLinks.map((link, idx) => (

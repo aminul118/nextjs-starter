@@ -1,13 +1,13 @@
-import { staticRoutes } from "@/seo/staticRoutes";
-import { Routes } from "@/types";
-import { MetadataRoute } from "next";
+import { staticRoutes } from '@/seo/staticRoutes';
+import { Routes } from '@/types';
+import { MetadataRoute } from 'next';
 
-const baseUrl = "https://www.xyz.com";
+const baseUrl = 'https://www.xyz.com';
 const lastModified = new Date();
 
 const generateSitemapEntries = (routes: Routes[]): MetadataRoute.Sitemap => {
   return routes.map((route) => ({
-    url: `${baseUrl}/${route?.url}`.replace(/\/+$/, ""),
+    url: `${baseUrl}/${route?.url}`.replace(/\/+$/, ''),
     lastModified,
     changeFrequency: route?.changeFrequency,
     priority: route?.priority,

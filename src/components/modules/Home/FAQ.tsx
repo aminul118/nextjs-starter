@@ -1,55 +1,54 @@
-import React from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import Image from "next/image";
-import Container from "@/components/ui/container";
-import { images } from "@/constants/images";
+} from '@/components/ui/accordion';
+import Container from '@/components/ui/container';
+import { images } from '@/constants/images';
+import Image from 'next/image';
 
 const FAQ = () => {
   const faqData = [
     {
-      value: "item-1",
-      question: "Is it accessible?",
-      answer: "Yes. It adheres to the WAI-ARIA design pattern.",
+      value: 'item-1',
+      question: 'Is it accessible?',
+      answer: 'Yes. It adheres to the WAI-ARIA design pattern.',
     },
     {
-      value: "item-2",
-      question: "How do I sign up?",
+      value: 'item-2',
+      question: 'How do I sign up?',
       answer:
-        "You can sign up by clicking the Sign Up button at the top right of the page.",
+        'You can sign up by clicking the Sign Up button at the top right of the page.',
     },
     {
-      value: "item-3",
-      question: "What payment methods are accepted?",
-      answer: "We accept credit cards, PayPal, and bank transfers.",
+      value: 'item-3',
+      question: 'What payment methods are accepted?',
+      answer: 'We accept credit cards, PayPal, and bank transfers.',
     },
     {
-      value: "item-4",
-      question: "Can I change my subscription plan?",
+      value: 'item-4',
+      question: 'Can I change my subscription plan?',
       answer:
-        "Yes, you can change your plan at any time from your account settings.",
+        'Yes, you can change your plan at any time from your account settings.',
     },
     {
-      value: "item-5",
-      question: "How can I contact support?",
+      value: 'item-5',
+      question: 'How can I contact support?',
       answer:
-        "You can contact support via email at support@example.com or call us at +1 234 567 890.",
+        'You can contact support via email at support@example.com or call us at +1 234 567 890.',
     },
   ];
 
   return (
-    <Container className="grid sm:grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-12">
+    <Container className="grid items-center gap-8 sm:grid-cols-1 lg:grid-cols-2 lg:gap-12">
       {/* FAQ Image */}
 
       <Image src={images.faq} width={500} height={500} alt="FAQ image" />
 
       {/* Accordion Content */}
-      <div className="max-w-xl w-full">
-        <h2 className="text-5xl font-bold mb-8">FAQ</h2>
+      <div className="w-full max-w-xl">
+        <h2 className="mb-8 text-5xl font-bold">FAQ</h2>
         <Accordion type="single" collapsible className="space-y-4">
           {faqData.map((item) => (
             <AccordionItem key={item.value} value={item.value}>

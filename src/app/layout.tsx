@@ -1,19 +1,19 @@
-import "./globals.css";
-import { GoogleAnalytics } from "@next/third-parties/google";
-import AosProvider from "@/providers/AosProvider";
-import { ThemeProvider } from "@/providers/ThemeProvider";
-import { Toaster } from "sonner";
-import { Metadata } from "next";
-import generateMetaTags from "@/seo/generateMetaTags";
-import { IChildren } from "@/types";
-import { poppins } from "@/lib/fonts";
+import { poppins } from '@/lib/fonts';
+import AosProvider from '@/providers/AosProvider';
+import { ThemeProvider } from '@/providers/ThemeProvider';
+import generateMetaTags from '@/seo/generateMetaTags';
+import { IChildren } from '@/types';
+import { GoogleAnalytics } from '@next/third-parties/google';
+import { Metadata } from 'next';
+import { Toaster } from 'sonner';
+import './globals.css';
 
 // >> SEO Start
 export const metadata: Metadata = generateMetaTags({
-  title: "Home",
-  description: "Write Description",
-  keywords: "write keyword not more than 60 words",
-  image: "/seo/shrl-hero-ss.png",
+  title: 'Home',
+  description: 'Write Description',
+  keywords: 'write keyword not more than 60 words',
+  image: '/seo/shrl-hero-ss.png',
 });
 // >> SEO End
 
