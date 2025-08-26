@@ -20,12 +20,10 @@ const GlobalError = ({ error, reset }: IGlobalError) => {
           </div>
 
           {/* Title */}
-          <h2 className="text-3xl font-bold text-gray-800">
-            Oops! Something Went Wrong
-          </h2>
+          <h2 className="text-3xl font-bold">Oops! Something Went Wrong</h2>
 
           {/* Message */}
-          <p className="text-gray-600">
+          <p>
             {error.message || 'An unexpected error occurred. Please try again.'}
           </p>
 

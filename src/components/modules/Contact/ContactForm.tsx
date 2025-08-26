@@ -1,13 +1,12 @@
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 
 const ContactForm = () => {
   return (
-    <Card>
-      <CardContent className="mx-auto flex w-full max-w-xl flex-col gap-6 lg:p-8">
+    <div>
+      <div className="mx-auto flex w-full max-w-xl flex-col gap-6 lg:p-8">
         <h2 className="mb-4 text-center text-3xl font-bold">
           Send Us a Message
         </h2>
@@ -50,8 +49,8 @@ const ContactForm = () => {
         </div>
 
         <Button>Send Message</Button>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };
 

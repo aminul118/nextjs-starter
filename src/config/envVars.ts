@@ -8,7 +8,10 @@ const getEnv = (key: string): string => {
 };
 
 const envVars = {
-  ENV: getEnv('NEXT_PUBLIC_ENV'),
+  Analytics: {
+    GA_ID: getEnv('NEXT_PUBLIC_Google_Analytics_ID'),
+    GTM_ID: getEnv('NEXT_PUBLIC_Google_Tag_Manager_ID'),
+  },
 };
 
 export default envVars;

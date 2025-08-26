@@ -52,9 +52,7 @@ const FAQ = () => {
         <Accordion type="single" collapsible className="space-y-4">
           {faqData.map((item) => (
             <AccordionItem key={item.value} value={item.value}>
-              <AccordionTrigger className="text-primary">
-                {item.question}
-              </AccordionTrigger>
+              <AccordionTrigger>{item.question}</AccordionTrigger>
               <AccordionContent>{item.answer}</AccordionContent>
             </AccordionItem>
           ))}
