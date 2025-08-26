@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/accordion";
 import Image from "next/image";
 import Container from "@/components/ui/container";
+import { images } from "@/constants/images";
 
 const FAQ = () => {
   const faqData = [
@@ -44,12 +45,7 @@ const FAQ = () => {
     <Container className="grid sm:grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-12">
       {/* FAQ Image */}
 
-      <Image
-        src={"/assets/images/faq.png"}
-        width={500}
-        height={500}
-        alt="FAQ image"
-      />
+      <Image src={images.faq} width={500} height={500} alt="FAQ image" />
 
       {/* Accordion Content */}
       <div className="max-w-xl w-full">
