@@ -39,7 +39,9 @@ const generateMetaTags = ({
         'en-US': `${metaConfig.baseUrl}/en-US`,
       },
     },
-    facebook: { appId: metaConfig.facebook_app_id },
+    facebook: {
+      appId: metaConfig.facebook_app_id,
+    },
     manifest: '/manifest.webmanifest',
     authors: [
       {
