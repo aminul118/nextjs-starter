@@ -1,0 +1,33 @@
+import { z } from 'zod';
+
+// Registration
+const registrationFormValidation = z
+  .object({
+    firstName: z.string().min(2, { message: 'First name is required' }),
+    lastName: z.string().min(2, { message: 'Last name is required' }),
+    email: z.string().email({ message: 'Invalid email address' }),
+    phone: z.string().min(10, { message: 'Phone number is too short' }),
+    password: z
+      .string()
+      .min(6, { message: 'Password must be at least 6 characters' }),
+    confirmPassword: z
+      .string()
+      .min(6, { message: 'Confirm password is required' }),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ['confirmPassword'],
+  });
+
+// Login
+const loginFormValidation = z.object({
+  email: z.string().email({ message: 'Invalid email address' }),
+  password: z
+    .string()
+    .min(6, { message: 'Password must be at least 6 characters' }),
+});
+
+export const authValidation = {
+  registrationFormValidation,
+  loginFormValidation,
+};
