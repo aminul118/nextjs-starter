@@ -30,12 +30,13 @@ interface INavMain {
       url: string;
     }[];
   }[];
+  label?: string;
 }
 
-const NavMain = ({ items }: INavMain) => {
+const NavMain = ({ items, label }: INavMain) => {
   return (
-    <SidebarGroup>
-      <SidebarGroupLabel>Menu</SidebarGroupLabel>
+    <SidebarGroup className="my-0 py-0">
+      {label && <SidebarGroupLabel>{label}</SidebarGroupLabel>}
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible

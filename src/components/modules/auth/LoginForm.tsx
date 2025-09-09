@@ -51,7 +51,7 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="flex flex-col gap-6"
               >
-                <div className="text-center">
+                <div className="grid place-items-center">
                   <Logo />
                   <p className="text-muted-foreground mt-4">
                     Login to your Tab Startup portal

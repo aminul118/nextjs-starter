@@ -9,48 +9,8 @@ import {
   SidebarHeader,
   SidebarRail,
 } from '@/components/ui/sidebar';
-import { BookOpen, Frame, PanelsTopLeft, SquareTerminal } from 'lucide-react';
 import Logo from '../logo';
-
-const data = {
-  navMain: [
-    {
-      title: 'Playground',
-      url: '/',
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: 'History',
-          url: '#',
-        },
-      ],
-    },
-    {
-      title: 'Documentation',
-      url: '#',
-      icon: BookOpen,
-      items: [
-        {
-          title: 'Introduction',
-          url: '#',
-        },
-      ],
-    },
-  ],
-  projects: [
-    {
-      name: 'Check',
-      url: '/dashboard/check',
-      icon: Frame,
-    },
-    {
-      name: 'People',
-      url: '#',
-      icon: PanelsTopLeft,
-    },
-  ],
-};
+import dashboardRoutes from './DashboardRoutes';
 
 const AppSidebar = ({ ...props }) => {
   return (
@@ -59,8 +19,8 @@ const AppSidebar = ({ ...props }) => {
         <Logo />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <SingleMenu label="Project" projects={data.projects} />
+        <NavMain label="Menu" items={dashboardRoutes.navMain} />
+        <SingleMenu projects={dashboardRoutes.projects} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser />

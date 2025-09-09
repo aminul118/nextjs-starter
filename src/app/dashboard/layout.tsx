@@ -23,7 +23,7 @@ const DashboardLayout = ({ children }: IChildren) => {
             <BreadcrumbShow />
           </div>
         </header>
-        <div className="p-3">{children}</div>
+        <div className="mx-auto w-10/12 p-3">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );
