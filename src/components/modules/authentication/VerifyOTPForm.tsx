@@ -65,11 +65,11 @@ const VerifyOTPForm = () => {
           </p>
         </CardHeader>
 
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-3">
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="flex flex-col gap-6"
+              className="flex max-w-sm flex-col items-center justify-center gap-6"
             >
               {/* OTP Field */}
               <FormField
@@ -97,28 +97,25 @@ const VerifyOTPForm = () => {
                         </InputOTPGroup>
                       </InputOTP>
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className="mt-4" />
                   </FormItem>
                 )}
               />
 
-              <Button type="submit">Verify OTP</Button>
+              <Button type="submit" className="w-64">
+                Verify OTP
+              </Button>
             </form>
           </Form>
 
           {/* Resend OTP Section */}
           <div className="text-center text-sm">
             {counter > 0 ? (
-              <p className="text-muted-foreground">
-                Resend available in{' '}
-                <span className="font-medium">{counter}s</span>
-              </p>
+              <Button variant="link" disabled className="text-muted-foreground">
+                {` Resend available in ${counter}`}
+              </Button>
             ) : (
-              <Button
-                variant="link"
-                onClick={handleResend}
-                className="text-primary"
-              >
+              <Button variant="link" onClick={handleResend}>
                 Resend OTP
               </Button>
             )}
