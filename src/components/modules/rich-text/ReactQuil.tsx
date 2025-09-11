@@ -25,7 +25,7 @@ const ReactQuil = ({ value, onChange, height = 700 }: IQuil) => {
   return (
     <div
       ref={quillRef}
-      className="bg-slate-700"
+      className="bg-black"
       style={{ height, color: 'white', border: 'none' }}
     />
   );

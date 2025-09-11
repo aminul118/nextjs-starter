@@ -1,4 +1,4 @@
-import VerifyOTPForm from '@/components/modules/auth/VerifyOTPForm';
+import VerifyOTPForm from '@/components/modules/authentication/VerifyOTPForm';
 import generateMetaTags from '@/seo/generateMetaTags';
 import { Metadata } from 'next';
 

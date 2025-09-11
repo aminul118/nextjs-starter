@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-export default function manifest(): MetadataRoute.Manifest {
+const manifest = (): MetadataRoute.Manifest => {
   return {
     name: 'Smart Healthcare and Research Ltd.',
     short_name: 'SHRLBD',
@@ -21,4 +21,6 @@ export default function manifest(): MetadataRoute.Manifest {
       },
     ],
   };
-}
+};
+
+export default manifest;

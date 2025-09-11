@@ -16,7 +16,7 @@ const AppSidebar = ({ ...props }) => {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <Logo />
+        <Logo className="mx-auto mt-4" />
       </SidebarHeader>
       <SidebarContent>
         <NavMain label="Menu" items={dashboardRoutes.navMain} />

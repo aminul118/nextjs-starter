@@ -27,7 +27,7 @@ interface IProject {
 }
 
 const SingleMenu = ({ projects, label }: IProject) => {
-  const { isMobile, state } = useSidebar();
+  const { state } = useSidebar();
 
   return (
     <SidebarGroup className="my-0 py-0">

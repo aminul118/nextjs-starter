@@ -1,4 +1,4 @@
-import RegisterForm from '@/components/modules/auth/RegisterForm';
+import RegisterForm from '@/components/modules/authentication/RegisterForm';
 import generateMetaTags from '@/seo/generateMetaTags';
 import { Metadata } from 'next';
 

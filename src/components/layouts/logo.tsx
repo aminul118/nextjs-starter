@@ -5,12 +5,19 @@ import Link from 'next/link';
 interface ILogo {
   height?: number;
   width?: number;
+  className?: string;
 }
 
-const Logo = ({ height = 40, width = 40 }: ILogo) => {
+const Logo = ({ height = 40, width = 40, className }: ILogo) => {
   return (
     <Link href={'/'}>
-      <Image src={icons.logo} height={height} width={width} alt="Logo" />
+      <Image
+        className={className}
+        src={icons.logo}
+        height={height}
+        width={width}
+        alt="Logo"
+      />
     </Link>
   );
 };
