@@ -93,7 +93,9 @@ const ForgotPasswordForm = ({
           <div className="text-center text-sm">
             Back to{' '}
             <Link href="/login">
-              <Button variant="link">Login</Button>
+              <Button variant="link" className="p-0 pl-1">
+                Login
+              </Button>
             </Link>
           </div>
         </CardContent>

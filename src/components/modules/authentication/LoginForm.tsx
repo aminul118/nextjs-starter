@@ -106,9 +106,11 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
               </form>
 
               <div className="mt-4 text-center text-sm">
-                Don't have an account?
+                {"Don't have an account?"}
                 <Link href="/register">
-                  <Button variant="link">Sign up</Button>
+                  <Button variant="link" className="p-0 pl-1">
+                    Sign up
+                  </Button>
                 </Link>
               </div>
             </Form>

@@ -187,7 +187,9 @@ const RegisterForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
             <div className="mt-4 text-center text-sm">
               You already have an account?
               <Link href="/login">
-                <Button variant="link">Sign in</Button>
+                <Button variant="link" className="p-0 pl-1">
+                  Sign in
+                </Button>
               </Link>
             </div>
           </div>
