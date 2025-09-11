@@ -27,7 +27,21 @@ const loginFormValidation = z.object({
     .min(6, { message: 'Password must be at least 6 characters' }),
 });
 
+const forgotPasswordValidation = z.object({
+  email: z.string().email({ message: 'Invalid email address' }),
+});
+
+const otpValidation = z.object({
+  otp: z
+    .string()
+    .min(6, 'OTP must be 6 digits')
+    .max(6, 'OTP must be 6 digits')
+    .regex(/^\d+$/, 'OTP must only contain numbers'),
+});
+
 export const authValidation = {
   registrationFormValidation,
   loginFormValidation,
+  forgotPasswordValidation,
+  otpValidation,
 };

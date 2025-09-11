@@ -7,7 +7,6 @@ export const metadata: Metadata = generateMetaTags({
   title: 'Register',
   description: 'Write Description',
   keywords: 'write keyword not more than 60 words',
-  image: '/seo/shrl-hero-ss.png',
 });
 // >> SEO End
 

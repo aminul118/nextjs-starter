@@ -1,5 +1,6 @@
 import envVars from '@/config/envVars';
 import { poppins } from '@/lib/fonts';
+import { cn } from '@/lib/utils';
 import AosProvider from '@/providers/AosProvider';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import generateMetaTags from '@/seo/generateMetaTags';
@@ -21,7 +22,7 @@ const RootLayout = ({ children }: IChildren) => {
   return (
     <html lang="en" suppressHydrationWarning>
       <GoogleTagManager gtmId={envVars.Analytics.GTM_ID} />
-      <body className={poppins.className}>
+      <body className={cn(poppins.className)} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
