@@ -40,15 +40,8 @@ const ForgotPasswordForm = ({
   };
 
   return (
-    <div
-      data-aos="fade-right"
-      className={cn(
-        'flex min-h-screen items-center justify-center px-4',
-        className,
-      )}
-      {...props}
-    >
-      <Card className="w-full max-w-md rounded-2xl shadow-xl">
+    <div data-aos="fade-right" className={cn('w-full', className)} {...props}>
+      <Card className="mx-auto w-full max-w-md rounded-2xl shadow-xl">
         <CardHeader className="flex flex-col items-center space-y-2 pb-2">
           <Logo />
           <CardTitle className="text-center text-xl font-semibold">

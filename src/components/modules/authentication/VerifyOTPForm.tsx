@@ -53,10 +53,7 @@ const VerifyOTPForm = () => {
   };
 
   return (
-    <div
-      data-aos="fade-left"
-      className="flex min-h-screen items-center justify-center px-4"
-    >
+    <div data-aos="fade-left" className="flex items-center justify-center">
       <Card className="w-full max-w-md rounded-2xl shadow-xl">
         <CardHeader className="flex flex-col items-center space-y-2 pb-2">
           <Logo />

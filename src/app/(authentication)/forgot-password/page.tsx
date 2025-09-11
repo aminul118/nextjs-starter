@@ -12,7 +12,7 @@ export const metadata: Metadata = generateMetaTags({
 
 const ForgotPasswordPage = () => {
   return (
-    <div className="grid h-screen">
+    <div className="bg-muted grid h-screen place-items-center">
       <ForgotPasswordForm />
     </div>
   );
