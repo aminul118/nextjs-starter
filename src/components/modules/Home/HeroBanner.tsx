@@ -59,10 +59,8 @@ const HeroBanner = ({
     <Container className="py-32">
       <div className="container mx-auto text-center">
         <div className="mx-auto flex max-w-5xl flex-col gap-6">
-          <h1 className="text-3xl font-extrabold lg:text-6xl">{heading}</h1>
-          <p className="text-muted-foreground text-balance lg:text-lg">
-            {description}
-          </p>
+          <h1 className="text-3xl font-bold lg:text-6xl">{heading}</h1>
+          <p className="text-muted-foreground text-balance">{description}</p>
         </div>
         <Button asChild size="lg" className="mt-10">
           <a href={button.url}>{button.text}</a>
