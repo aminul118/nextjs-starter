@@ -9,6 +9,8 @@ const generateMetaTags = ({
   image = metaConfig.baseImage,
   websitePath = '',
 }: MetaProps): Metadata => {
+  const cleanPath = websitePath.replace(/^\/+/, '').replace(/\/+$/, '');
+
   return {
     metadataBase: new URL(metaConfig.baseUrl),
     title,
@@ -17,9 +19,9 @@ const generateMetaTags = ({
     category: metaConfig.website_category,
     openGraph: {
       type: 'website',
-      url: `${metaConfig.baseUrl}/${websitePath}`.replace(/\/+$/, ''),
-      title: title,
-      description: description,
+      url: `${metaConfig.baseUrl}/${cleanPath}`,
+      title,
+      description,
       siteName: metaConfig.site_name,
       images: [{ url: image, alt: title }],
     },
@@ -34,7 +36,7 @@ const generateMetaTags = ({
     },
     applicationName: metaConfig.applicationName,
     alternates: {
-      canonical: `${metaConfig.baseUrl}/${websitePath}`.replace(/\/+$/, ''),
+      canonical: `${metaConfig.baseUrl}/${cleanPath}`,
       languages: {
         'en-US': `${metaConfig.baseUrl}/en-US`,
       },
