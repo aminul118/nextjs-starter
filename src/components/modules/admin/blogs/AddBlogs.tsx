@@ -1,5 +1,5 @@
 'use client';
-import ReactQuil from '@/components/modules/rich-text/ReactQuil';
+import ReactQuil from '@/components/common/rich-text/ReactQuil';
 import { useState } from 'react';
 
 const AddBlogs = () => {

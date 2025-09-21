@@ -10,7 +10,7 @@ const AosProvider = ({ children }: IChildren) => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
-  return <div className="overflow-x-hidden">{children}</div>;
+  return <>{children}</>;
 };
 
 export default AosProvider;

@@ -12,7 +12,7 @@ export const metadata: Metadata = generateMetaTags({
 // >> SEO End
 const VerifyOTPPage = () => {
   return (
-    <div className="bg-muted grid h-screen">
+    <div className="bg-muted grid h-screen overflow-x-hidden">
       <VerifyOTPForm />
     </div>
   );

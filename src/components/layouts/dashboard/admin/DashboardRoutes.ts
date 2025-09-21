@@ -29,12 +29,12 @@ const dashboardRoutes = {
   projects: [
     {
       name: 'Check',
-      url: '/dashboard/check',
+      url: '/admin/check',
       icon: Frame,
     },
     {
       name: 'Blogs',
-      url: '/dashboard/blogs',
+      url: '/admin/blogs',
       icon: NotebookPen,
     },
   ],

@@ -1,5 +1,5 @@
-import AppSidebar from '@/components/layouts/dashboard/app-sidebar';
-import BreadcrumbShow from '@/components/layouts/dashboard/BreadcrumbShow';
+import AppSidebar from '@/components/layouts/dashboard/admin/app-sidebar';
+import DashboardBreadcrumb from '@/components/layouts/dashboard/admin/DashboardBreadcrumb ';
 import { Separator } from '@/components/ui/separator';
 import {
   SidebarInset,
@@ -8,9 +8,10 @@ import {
 } from '@/components/ui/sidebar';
 import { IChildren } from '@/types';
 
-const DashboardLayout = ({ children }: IChildren) => {
+const AdminLayout = ({ children }: IChildren) => {
   return (
     <SidebarProvider>
+      {/* This is Sidebar Menu  */}
       <AppSidebar />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
@@ -18,15 +19,15 @@ const DashboardLayout = ({ children }: IChildren) => {
             <SidebarTrigger className="-ml-1" />
             <Separator
               orientation="vertical"
-              className="mr-1 data-[orientation=vertical]:h-4"
+              className="mr-2 data-[orientation=vertical]:h-4"
             />
-            <BreadcrumbShow />
+            <DashboardBreadcrumb />
           </div>
         </header>
-        <div className="mx-auto w-10/12 p-3">{children}</div>
+        <div className="container mx-auto px-2">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );
 };
 
-export default DashboardLayout;
+export default AdminLayout;

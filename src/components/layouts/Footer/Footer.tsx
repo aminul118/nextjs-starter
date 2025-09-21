@@ -2,6 +2,7 @@
 import Container from '@/components/ui/container';
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import Logo from '../logo';
+import ModeToggle from '../ModeToggle';
 
 const sections = [
   {
@@ -151,6 +152,9 @@ const Footer = () => {
               <a href={link.href}> {link.name}</a>
             </li>
           ))}
+          <li>
+            <ModeToggle />
+          </li>
         </ul>
       </div>
     </Container>

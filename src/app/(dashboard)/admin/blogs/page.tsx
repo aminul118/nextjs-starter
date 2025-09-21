@@ -45,7 +45,7 @@ const BlogPage = () => {
       <div className="mb-4 flex items-center justify-between">
         <h1 className="text-2xl font-bold">📚 Demo Blogs</h1>
         <Button>
-          <Link href="/dashboard/add-blogs">Add Blogs</Link>
+          <Link href="/admin/add-blogs">Add Blogs</Link>
         </Button>
       </div>
 

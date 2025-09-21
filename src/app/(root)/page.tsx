@@ -1,3 +1,4 @@
+import SearchButton from '@/components/common/rich-text/SearchButton';
 import Contact from '@/components/modules/Contact/Contact';
 import FAQ from '@/components/modules/Home/FAQ';
 import HeroBanner from '@/components/modules/Home/HeroBanner';
@@ -16,6 +17,7 @@ export const metadata: Metadata = generateMetaTags({
 const HomePage = () => {
   return (
     <>
+      <SearchButton />
       <HeroBanner />
       <FAQ />
       <Contact />

@@ -5,7 +5,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import Container from '@/components/ui/container';
-import { images } from '@/constants/images';
+import images from '@/config/images';
 import Image from 'next/image';
 
 const FAQ = () => {

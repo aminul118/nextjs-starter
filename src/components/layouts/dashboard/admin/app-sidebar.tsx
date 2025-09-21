@@ -1,7 +1,7 @@
 'use client';
-import NavMain from '@/components/layouts/dashboard/nav-main';
-import NavUser from '@/components/layouts/dashboard/nav-user';
-import SingleMenu from '@/components/layouts/dashboard/single-menu';
+import NavMain from '@/components/layouts/dashboard/admin/nav-main';
+import NavUser from '@/components/layouts/dashboard/admin/nav-user';
+import SingleMenu from '@/components/layouts/dashboard/admin/single-menu';
 import {
   Sidebar,
   SidebarContent,
@@ -9,7 +9,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from '@/components/ui/sidebar';
-import Logo from '../logo';
+import Logo from '../../logo';
 import dashboardRoutes from './DashboardRoutes';
 
 const AppSidebar = ({ ...props }) => {

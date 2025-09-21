@@ -1,4 +1,4 @@
-import AddBlogs from '@/components/modules/admin/blogs/AddBlogs';
+import AddBlogs from '@/components/modules/admin/Blogs/AddBlogs';
 
 const AddBlogPage = () => {
   return (

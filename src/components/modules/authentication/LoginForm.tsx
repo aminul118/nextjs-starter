@@ -12,18 +12,18 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import Password from '@/components/ui/password';
-import { images } from '@/constants/images';
+import images from '@/config/images';
 import { cn } from '@/lib/utils';
+import validation from '@/validations';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { authValidation } from './auth.validation';
 
 const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
-  const form = useForm<z.infer<typeof authValidation.loginFormValidation>>({
-    resolver: zodResolver(authValidation.loginFormValidation),
+  const form = useForm<z.infer<typeof validation.auth.loginFormValidation>>({
+    resolver: zodResolver(validation.auth.loginFormValidation),
     defaultValues: {
       email: '',
       password: '',
@@ -31,7 +31,7 @@ const LoginForm = ({ className, ...props }: React.ComponentProps<'div'>) => {
   });
 
   const onSubmit = async (
-    values: z.infer<typeof authValidation.loginFormValidation>,
+    values: z.infer<typeof validation.auth.loginFormValidation>,
   ) => {
     console.log(values);
   };

@@ -1,4 +1,4 @@
-import { BookOpenIcon, InfoIcon, LifeBuoyIcon } from 'lucide-react';
+'use client';
 
 import Logo from '@/components/layouts/logo';
 import { Button } from '@/components/ui/button';
@@ -16,12 +16,15 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
+import { BookOpenIcon, InfoIcon, LifeBuoyIcon } from 'lucide-react';
 import Link from 'next/link';
-import ModeToggle from '../ModeToggle';
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
-  { href: '#', label: 'Home' },
+  { href: '/', label: 'Home' },
+  { href: '/profile', label: 'Profile' },
+  { href: '/dashboard', label: 'Dashboard' },
+  { href: '/admin', label: 'Admin Dashboard' },
   {
     label: 'Features',
     submenu: true,
@@ -69,7 +72,7 @@ const navigationLinks = [
 
 const Navbar = () => {
   return (
-    <header className="border-b px-4 md:px-6">
+    <header className="sticky top-0 z-50 border-b px-4 backdrop-blur-2xl md:px-6">
       <div className="container mx-auto flex h-16 items-center justify-between gap-4">
         {/* Left side */}
         <div className="flex items-center gap-2">
@@ -121,26 +124,24 @@ const Navbar = () => {
                           <ul>
                             {link.items.map((item, itemIndex) => (
                               <li key={itemIndex}>
-                                <NavigationMenuLink
-                                  href={item.href}
-                                  className="py-1.5"
-                                >
-                                  {item.label}
+                                <NavigationMenuLink asChild>
+                                  <Link href={item.href} className="py-1.5">
+                                    {item.label}
+                                  </Link>
                                 </NavigationMenuLink>
                               </li>
                             ))}
                           </ul>
                         </>
                       ) : (
-                        <NavigationMenuLink href={link.href} className="py-1.5">
-                          {link.label}
+                        <NavigationMenuLink asChild>
+                          <Link href={link.href ?? ''} className="py-1.5">
+                            {link.label}
+                          </Link>
                         </NavigationMenuLink>
                       )}
                       {/* Add separator between different types of items */}
                       {index < navigationLinks.length - 1 &&
-                        // Show separator if:
-                        // 1. One is submenu and one is simple link OR
-                        // 2. Both are submenus but with different types
                         ((!link.submenu &&
                           navigationLinks[index + 1].submenu) ||
                           (link.submenu &&
@@ -184,57 +185,55 @@ const Navbar = () => {
                           >
                             {link.items.map((item, itemIndex) => (
                               <li key={itemIndex}>
-                                <NavigationMenuLink
-                                  href={item.href}
-                                  className="py-1.5"
-                                >
-                                  {/* Display icon if present */}
-                                  {link.type === 'icon' && 'icon' in item && (
-                                    <div className="flex items-center gap-2">
-                                      {item.icon === 'BookOpenIcon' && (
-                                        <BookOpenIcon
-                                          size={16}
-                                          className="text-foreground opacity-60"
-                                          aria-hidden="true"
-                                        />
-                                      )}
-                                      {item.icon === 'LifeBuoyIcon' && (
-                                        <LifeBuoyIcon
-                                          size={16}
-                                          className="text-foreground opacity-60"
-                                          aria-hidden="true"
-                                        />
-                                      )}
-                                      {item.icon === 'InfoIcon' && (
-                                        <InfoIcon
-                                          size={16}
-                                          className="text-foreground opacity-60"
-                                          aria-hidden="true"
-                                        />
-                                      )}
-                                      <span>{item.label}</span>
-                                    </div>
-                                  )}
-
-                                  {/* Display label with description if present */}
-                                  {link.type === 'description' &&
-                                  'description' in item ? (
-                                    <div className="space-y-1">
-                                      <div className="font-medium">
-                                        {item.label}
-                                      </div>
-                                      <p className="text-muted-foreground line-clamp-2 text-xs">
-                                        {item.description}
-                                      </p>
-                                    </div>
-                                  ) : (
-                                    // Display simple label if not icon or description type
-                                    !link.type ||
-                                    (link.type !== 'icon' &&
-                                      link.type !== 'description' && (
+                                <NavigationMenuLink asChild>
+                                  <Link href={item.href} className="py-1.5">
+                                    {/* Display icon if present */}
+                                    {link.type === 'icon' && 'icon' in item && (
+                                      <div className="flex items-center gap-2">
+                                        {item.icon === 'BookOpenIcon' && (
+                                          <BookOpenIcon
+                                            size={16}
+                                            className="text-foreground opacity-60"
+                                            aria-hidden="true"
+                                          />
+                                        )}
+                                        {item.icon === 'LifeBuoyIcon' && (
+                                          <LifeBuoyIcon
+                                            size={16}
+                                            className="text-foreground opacity-60"
+                                            aria-hidden="true"
+                                          />
+                                        )}
+                                        {item.icon === 'InfoIcon' && (
+                                          <InfoIcon
+                                            size={16}
+                                            className="text-foreground opacity-60"
+                                            aria-hidden="true"
+                                          />
+                                        )}
                                         <span>{item.label}</span>
-                                      ))
-                                  )}
+                                      </div>
+                                    )}
+
+                                    {/* Display label with description if present */}
+                                    {link.type === 'description' &&
+                                    'description' in item ? (
+                                      <div className="space-y-1">
+                                        <div className="font-medium">
+                                          {item.label}
+                                        </div>
+                                        <p className="text-muted-foreground line-clamp-2 text-xs">
+                                          {item.description}
+                                        </p>
+                                      </div>
+                                    ) : (
+                                      !link.type ||
+                                      (link.type !== 'icon' &&
+                                        link.type !== 'description' && (
+                                          <span>{item.label}</span>
+                                        ))
+                                    )}
+                                  </Link>
                                 </NavigationMenuLink>
                               </li>
                             ))}
@@ -242,11 +241,13 @@ const Navbar = () => {
                         </NavigationMenuContent>
                       </>
                     ) : (
-                      <NavigationMenuLink
-                        href={link.href}
-                        className="text-muted-foreground hover:text-primary py-1.5 font-medium"
-                      >
-                        {link.label}
+                      <NavigationMenuLink asChild>
+                        <Link
+                          href={link.href ?? ''}
+                          className="text-muted-foreground hover:text-primary py-1.5 font-medium"
+                        >
+                          {link.label}
+                        </Link>
                       </NavigationMenuLink>
                     )}
                   </NavigationMenuItem>
@@ -260,7 +261,6 @@ const Navbar = () => {
           <Button asChild size="sm" className="text-sm">
             <Link href="/login">Sign In</Link>
           </Button>
-          <ModeToggle />
         </div>
       </div>
     </header>

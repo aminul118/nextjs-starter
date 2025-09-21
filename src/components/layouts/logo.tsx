@@ -1,4 +1,4 @@
-import icons from '@/constants/icons';
+import icons from '@/config/icons';
 import Image from 'next/image';
 import Link from 'next/link';
 
