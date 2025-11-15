@@ -15,18 +15,18 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useCreateContactMutation } from '@/redux/features/contact/contact.api';
-import validation from '@/validations';
+import { contactFormValidation } from '@/validations/contact';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
+type FormValues = z.infer<typeof contactFormValidation>;
+
 const ContactForm = () => {
   const [contact] = useCreateContactMutation();
-  const form = useForm<
-    z.infer<typeof validation.contact.contactFormValidation>
-  >({
-    resolver: zodResolver(validation.contact.contactFormValidation),
+  const form = useForm<FormValues>({
+    resolver: zodResolver(contactFormValidation),
     defaultValues: {
       name: '',
       email: '',
@@ -35,9 +35,7 @@ const ContactForm = () => {
     },
   });
 
-  const onSubmit = async (
-    data: z.infer<typeof validation.contact.contactFormValidation>,
-  ) => {
+  const onSubmit = async (data: FormValues) => {
     console.log(data);
     const toastId = toast.loading('Message Sending');
     try {

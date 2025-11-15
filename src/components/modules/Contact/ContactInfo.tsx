@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const ContactInfo = () => {
   return (
     <div className="space-y-6">
@@ -11,12 +13,12 @@ const ContactInfo = () => {
         <p>
           <span className="text-foreground font-medium">Email:</span>
           <br />
-          <a
+          <Link
             href="mailto:info@shrlbd.com"
             className="text-primary hover:underline"
           >
             info@shrlbd.com
-          </a>
+          </Link>
         </p>
       </div>
     </div>

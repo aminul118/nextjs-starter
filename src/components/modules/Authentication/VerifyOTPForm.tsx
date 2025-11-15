@@ -23,7 +23,8 @@ import {
   useSendOtpMutation,
   useVerifyOtpMutation,
 } from '@/redux/features/otp/otp.api';
-import validation from '@/validations';
+import { otpValidation } from '@/validations/auth';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { forbidden, useRouter, useSearchParams } from 'next/navigation';
@@ -31,6 +32,8 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
+
+type FormValues = z.infer<typeof otpValidation>;
 
 const VerifyOTPForm = () => {
   const [counter, setCounter] = useState(60); // 1 min timer
@@ -45,8 +48,8 @@ const VerifyOTPForm = () => {
     if (!email) forbidden();
   }, [email]);
 
-  const form = useForm<z.infer<typeof validation.auth.otpValidation>>({
-    resolver: zodResolver(validation.auth.otpValidation),
+  const form = useForm<FormValues>({
+    resolver: zodResolver(otpValidation),
     defaultValues: {
       otp: '',
     },
@@ -60,9 +63,7 @@ const VerifyOTPForm = () => {
     }
   }, [counter]);
 
-  const onSubmit = async (
-    value: z.infer<typeof validation.auth.otpValidation>,
-  ) => {
+  const onSubmit = async (value: FormValues) => {
     try {
       if (!email) {
         toast.error('Email Not Found..');

@@ -14,14 +14,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { cn } from '@/lib/utils';
-import Link from 'next/link';
-import Logo from '../Logo';
-
-import SearchTeamMember from '@/components/common/searching/SearchTeamMember';
 import { AppDataContext } from '@/context/auth-context';
+import { cn } from '@/lib/utils';
 import { BookOpenIcon, Briefcase, InfoIcon, LifeBuoyIcon } from 'lucide-react';
+import Link from 'next/link';
 import { useContext } from 'react';
+import Logo from '../Logo';
 import NavProfile from './NavProfile';
 
 /* ---------- Types to make `href` never undefined on simple links ---------- */
@@ -63,7 +61,6 @@ type NavItem = SimpleLink | SubmenuDesc | SubmenuIcon;
 const navigationLinks: NavItem[] = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
-  { href: '/team', label: 'team' },
   {
     label: 'Events',
     submenu: true,
@@ -81,8 +78,7 @@ const navigationLinks: NavItem[] = [
       },
     ],
   },
-  { href: '/blogs', label: 'Blogs' },
-  { href: '/ai', label: 'AI' },
+
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -319,9 +315,6 @@ const Navbar = () => {
 
         {/* Right side */}
         <div className="flex items-center gap-2">
-          <div className="hidden md:block">
-            <SearchTeamMember />
-          </div>
           <Button variant="destructive" size="sm" className="text-sm">
             <Briefcase /> <Link href="/careers">Careers</Link>
           </Button>

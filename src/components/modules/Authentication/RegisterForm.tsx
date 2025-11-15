@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
+import ButtonSpinner from '@/components/common/loader/ButtonSpinner';
+import Logo from '@/components/layouts/Logo';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import {
@@ -12,14 +14,11 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-
-import ButtonSpinner from '@/components/common/loader/ButtonSpinner';
-import Logo from '@/components/layouts/Logo';
 import Password from '@/components/ui/password';
 import images from '@/config/images';
 import { cn } from '@/lib/utils';
 import { useRegisterMutation } from '@/redux/features/auth/auth.api';
-import validation from '@/validations';
+import { registrationFormValidation } from '@/validations/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -28,13 +27,13 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
+type FormValues = z.infer<typeof registrationFormValidation>;
+
 const RegisterForm = ({ className }: { className?: string }) => {
   const [register, { isLoading }] = useRegisterMutation();
   const router = useRouter();
-  const form = useForm<
-    z.infer<typeof validation.auth.registrationFormValidation>
-  >({
-    resolver: zodResolver(validation.auth.registrationFormValidation),
+  const form = useForm<FormValues>({
+    resolver: zodResolver(registrationFormValidation),
     defaultValues: {
       firstName: '',
       lastName: '',
@@ -45,9 +44,7 @@ const RegisterForm = ({ className }: { className?: string }) => {
     },
   });
 
-  const onSubmit = async (
-    data: z.infer<typeof validation.auth.registrationFormValidation>,
-  ) => {
+  const onSubmit = async (data: FormValues) => {
     const { firstName, lastName, email, phone, password } = data;
     const payload = {
       firstName,

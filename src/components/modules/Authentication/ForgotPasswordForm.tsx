@@ -16,7 +16,6 @@ import {
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { useForgotPasswordMutation } from '@/redux/features/auth/auth.api';
-import validation from '@/validations';
 import { forgotPasswordValidation } from '@/validations/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Send } from 'lucide-react';
@@ -36,7 +35,7 @@ const ForgotPasswordForm = ({
   const router = useRouter();
 
   const form = useForm<FormValues>({
-    resolver: zodResolver(validation.auth.forgotPasswordValidation),
+    resolver: zodResolver(forgotPasswordValidation),
     defaultValues: {
       email: '',
     },
