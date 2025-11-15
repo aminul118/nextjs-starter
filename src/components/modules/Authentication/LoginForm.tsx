@@ -17,7 +17,7 @@ import Password from '@/components/ui/password';
 import images from '@/config/images';
 import { cn } from '@/lib/utils';
 import { useLoginMutation } from '@/redux/features/auth/auth.api';
-import { Role } from '@/types';
+import { Role } from '@/types/user.types';
 import { loginFormValidation } from '@/validations/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
