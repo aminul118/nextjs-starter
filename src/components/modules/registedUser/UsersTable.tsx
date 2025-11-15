@@ -24,7 +24,7 @@ import {
 } from '@/components/ui/table';
 import { useAllUsersInfoQuery } from '@/redux/features/user/user.api';
 import { IMeta } from '@/types';
-import { IUser } from '@/types/apiData.types';
+import { IUser } from '@/types/api.types';
 import { BadgeCheck } from 'lucide-react';
 import NewUserModal from './NewUserModal';
 import UserActions from './user-actions';

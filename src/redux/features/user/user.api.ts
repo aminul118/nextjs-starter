@@ -1,6 +1,5 @@
 import { baseApi } from '@/redux/baseApi';
-import { ApiResponse } from '@/types';
-import { IUser } from '@/types/apiData.types';
+import { ApiResponse, IUser } from '@/types';
 
 export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

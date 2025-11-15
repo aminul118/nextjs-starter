@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { getUserFromCookie } from './lib/auth';
-import { Role } from './types';
+import { Role } from './types/user.types';
 
 const authRoutes = [
   '/login',

@@ -14,7 +14,8 @@ import {
 import { AppDataContext } from '@/context/auth-context';
 import { authApi, useLogoutMutation } from '@/redux/features/auth/auth.api';
 import { useAppDispatch } from '@/redux/hook';
-import { Role } from '@/types';
+import { Role } from '@/types/user.types';
+
 import { LogOut, UserRound } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
