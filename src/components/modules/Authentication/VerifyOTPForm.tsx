@@ -24,7 +24,6 @@ import {
   useVerifyOtpMutation,
 } from '@/redux/features/otp/otp.api';
 import { otpValidation } from '@/validations/auth';
-
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { forbidden, useRouter, useSearchParams } from 'next/navigation';

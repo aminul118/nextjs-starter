@@ -10,8 +10,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
-import { IModal } from '@/types';
-import { IUser } from '@/types/api.types';
+import { IModal, IUser } from '@/types';
 
 interface Props extends IModal {
   user: IUser;
