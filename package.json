@@ -7,10 +7,11 @@
     "build": "next build",
     "start": "next start",
     "prod": "npm run build && vercel --prod",
-    "lint": "eslint",
-    "prepare": "husky",
     "prettier:check": "npx prettier . --check",
-    "prettier:fix": "npx prettier . --write"
+    "prettier:fix": "npx prettier . --write",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "prepare": "husky"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
