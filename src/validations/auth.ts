@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 // Registration
-export const registrationFormValidation = z
+const registrationFormValidation = z
   .object({
     firstName: z.string().min(2, { message: 'First name is required' }),
     lastName: z.string().min(2, { message: 'Last name is required' }),
@@ -20,14 +20,14 @@ export const registrationFormValidation = z
   });
 
 // Login
-export const loginFormValidation = z.object({
+const loginFormValidation = z.object({
   email: z.string().email({ message: 'Invalid email address' }),
   password: z
     .string()
     .min(6, { message: 'Password must be at least 6 characters' }),
 });
 
-export const forgotPasswordValidation = z.object({
+const forgotPasswordValidation = z.object({
   email: z.string().email({ message: 'Invalid email address' }),
 });
 
@@ -39,7 +39,7 @@ export const otpValidation = z.object({
     .regex(/^\d+$/, 'OTP must only contain numbers'),
 });
 
-export const resetPasswordValidation = z
+const resetPasswordValidation = z
   .object({
     password: z
       .string()
@@ -53,7 +53,7 @@ export const resetPasswordValidation = z
     path: ['confirmPassword'],
   });
 
-export const passwordChangeValidation = z
+const passwordChangeValidation = z
   .object({
     oldPassword: z.string().min(6, {
       message: 'Old password must be at least 6 characters.',
@@ -73,3 +73,11 @@ export const passwordChangeValidation = z
     message: 'New password cannot be the same as old password.',
     path: ['newPassword'],
   });
+
+export {
+  forgotPasswordValidation,
+  loginFormValidation,
+  passwordChangeValidation,
+  registrationFormValidation,
+  resetPasswordValidation,
+};
