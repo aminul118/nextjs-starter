@@ -1,7 +1,11 @@
-import LoadingSpinner from '@/components/common/loader/LoadingSpinner';
+import AuthSkeleton from '@/components/modules/Authentication/AuthSkeleton';
 
 const loading = () => {
-  return <LoadingSpinner className="bg-muted min-h-screen" />;
+  return (
+    <div className="center">
+      <AuthSkeleton />
+    </div>
+  );
 };
 
 export default loading;
