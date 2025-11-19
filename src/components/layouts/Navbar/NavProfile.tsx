@@ -1,6 +1,7 @@
 'use client';
 
 import ButtonSpinner from '@/components/common/loader/ButtonSpinner';
+import LogoutButton from '@/components/modules/Authentication/LogoutButton';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
@@ -12,36 +13,17 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { AppDataContext } from '@/context/auth-context';
-import { authApi, useLogoutMutation } from '@/redux/features/auth/auth.api';
-import { useAppDispatch } from '@/redux/hook';
 import { Role } from '@/types/user.types';
 
-import { LogOut, UserRound } from 'lucide-react';
+import { UserRound } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
-import { toast } from 'sonner';
 
 const NavProfile = () => {
   const context = useContext(AppDataContext);
-  const [logout, { isLoading }] = useLogoutMutation();
-  const dispatch = useAppDispatch();
-  const router = useRouter();
 
   const user = context?.userData;
   const userLoading = context?.userLoading;
-
-  // 🔹 Logout handler
-  const handleLogout = async () => {
-    try {
-      const res = await logout(undefined).unwrap();
-      dispatch(authApi.util.resetApiState());
-      toast.success(res.message || 'Logged out successfully');
-      router.push('/');
-    } catch {
-      toast.error('Log out failed.');
-    }
-  };
 
   // 🔹 While loading user data
   if (userLoading) {
@@ -131,22 +113,7 @@ const NavProfile = () => {
 
           <DropdownMenuSeparator />
 
-          {/* ✅ Logout now closes dropdown immediately */}
-          <DropdownMenuItem
-            onSelect={handleLogout}
-            disabled={isLoading}
-            className="flex items-center justify-center gap-2"
-          >
-            {isLoading ? (
-              <>
-                <ButtonSpinner size={16} /> Logging out...
-              </>
-            ) : (
-              <>
-                <LogOut size={16} /> Log out
-              </>
-            )}
-          </DropdownMenuItem>
+          <LogoutButton />
         </DropdownMenuContent>
       </DropdownMenu>
     );

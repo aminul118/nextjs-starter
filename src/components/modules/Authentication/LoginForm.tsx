@@ -1,6 +1,7 @@
 'use client';
 
-import ButtonSpinner from '@/components/common/loader/ButtonSpinner';
+import { loginAction } from '@/actions/auth/login';
+import FormSubmitButton from '@/components/common/form-submit-button';
 import Logo from '@/components/layouts/Logo';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -16,8 +17,6 @@ import { Input } from '@/components/ui/input';
 import Password from '@/components/ui/password';
 import images from '@/config/images';
 import { cn } from '@/lib/utils';
-import { useLoginMutation } from '@/redux/features/auth/auth.api';
-import { Role } from '@/types/user.types';
 import { loginFormValidation } from '@/validations/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';
@@ -30,9 +29,8 @@ import { z } from 'zod';
 type FormValues = z.infer<typeof loginFormValidation>;
 
 const LoginForm = ({ className }: { className?: string }) => {
-  const [login, { isLoading }] = useLoginMutation();
   const router = useRouter();
-  const searchParams = useSearchParams(); // ✅ read query params
+  const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl');
 
   const form = useForm<FormValues>({
@@ -45,28 +43,26 @@ const LoginForm = ({ className }: { className?: string }) => {
 
   const onSubmit = async (data: FormValues) => {
     try {
-      const res = await login(data).unwrap();
-      toast.success(res.message || 'User login successfully');
-      if (res?.data?.user?.role === Role.ADMIN) {
+      const formData = new FormData();
+      formData.append('email', data.email);
+      formData.append('password', data.password);
+
+      const res = await loginAction(formData);
+
+      if (!res.success) {
+        toast.error(res.message);
+        return;
+      }
+
+      toast.success('Login successful');
+
+      if (res.role === 'ADMIN') {
         router.push(callbackUrl || '/admin');
-      } else if (res?.data?.user?.role === Role.USER) {
-        router.push(callbackUrl || '/dashboard');
       } else {
-        router.push('/');
+        router.push(callbackUrl || '/dashboard');
       }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      console.log('ERR=>', error);
-      if (error.status === 401) {
-        toast.error('Email or password Incorrect');
-      }
-      if (error.status === 400) {
-        toast.error('Email or password Incorrect');
-      }
-      if (error.status === 900) {
-        router.push(`/verify?email=${data.email}`);
-        toast.error('You are not verified User. ');
-      }
+    } catch {
+      toast.error('Something went wrong');
     }
   };
 
@@ -80,7 +76,6 @@ const LoginForm = ({ className }: { className?: string }) => {
     >
       <Card className="w-full max-w-5xl overflow-hidden p-0">
         <CardContent className="grid p-0 md:grid-cols-2">
-          {/* Form Section */}
           <div className="flex flex-col justify-center gap-6 p-6 md:p-12">
             <Form {...form}>
               <form
@@ -88,7 +83,7 @@ const LoginForm = ({ className }: { className?: string }) => {
                 className="flex flex-col gap-6"
               >
                 <div className="grid place-items-center">
-                  <Link href={'/'}>
+                  <Link href="/">
                     <Logo />
                   </Link>
                   <p className="text-muted-foreground mt-4 text-center">
@@ -137,15 +132,9 @@ const LoginForm = ({ className }: { className?: string }) => {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full" disabled={isLoading}>
-                  {isLoading ? (
-                    <>
-                      Login <ButtonSpinner />
-                    </>
-                  ) : (
-                    <>Login</>
-                  )}
-                </Button>
+
+                {/* Submit */}
+                <FormSubmitButton className="w-full">Login</FormSubmitButton>
               </form>
 
               <div className="mt-4 text-center text-sm">
@@ -159,7 +148,7 @@ const LoginForm = ({ className }: { className?: string }) => {
             </Form>
           </div>
 
-          {/* Image Section */}
+          {/* Image */}
           <div className="bg-muted relative hidden md:block">
             <Image
               className="absolute inset-0 h-full w-full object-cover brightness-[0.5] grayscale dark:brightness-[0.2]"
