@@ -1,7 +1,6 @@
 'use client';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import DateFormat from '@/components/common/date-format';
 import ClearAllFilter from '@/components/common/filtering/ClearAllFilter';
 import TableSkeleton from '@/components/common/loader/TableSkeleton';
 import AppPagination from '@/components/common/pagination/AppPagination';
@@ -13,6 +12,7 @@ import Sorting from '@/components/common/sorting/Sorting';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import Container from '@/components/ui/Container';
+import DateFormat from '@/components/ui/date-format';
 import GradientTitle from '@/components/ui/gradientTitle';
 import {
   Table,

@@ -1,7 +1,6 @@
 'use client';
 
 import { loginAction } from '@/actions/auth/login';
-import FormSubmitButton from '@/components/common/form-submit-button';
 import Logo from '@/components/layouts/Logo';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -15,6 +14,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import Password from '@/components/ui/password';
+import SubmitButton from '@/components/ui/submit-button';
 import images from '@/config/images';
 import { cn } from '@/lib/utils';
 import { loginFormValidation } from '@/validations/auth';
@@ -41,13 +41,10 @@ const LoginForm = ({ className }: { className?: string }) => {
     },
   });
 
-  const onSubmit = async (data: FormValues) => {
+  // Form Submitter function
+  const onSubmit = async (data: FormData) => {
     try {
-      const formData = new FormData();
-      formData.append('email', data.email);
-      formData.append('password', data.password);
-
-      const res = await loginAction(formData);
+      const res = await loginAction(data);
 
       if (!res.success) {
         toast.error(res.message);
@@ -78,10 +75,7 @@ const LoginForm = ({ className }: { className?: string }) => {
         <CardContent className="grid p-0 md:grid-cols-2">
           <div className="flex flex-col justify-center gap-6 p-6 md:p-12">
             <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="flex flex-col gap-6"
-              >
+              <form action={onSubmit} className="flex flex-col gap-6">
                 <div className="grid place-items-center">
                   <Link href="/">
                     <Logo />
@@ -134,7 +128,7 @@ const LoginForm = ({ className }: { className?: string }) => {
                 />
 
                 {/* Submit */}
-                <FormSubmitButton className="w-full">Login</FormSubmitButton>
+                <SubmitButton className="w-full">Login</SubmitButton>
               </form>
 
               <div className="mt-4 text-center text-sm">

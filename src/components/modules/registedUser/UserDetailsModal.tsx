@@ -1,8 +1,8 @@
 'use client';
 
-import DateFormat from '@/components/common/date-format';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
+import DateFormat from '@/components/ui/date-format';
 import {
   Dialog,
   DialogContent,

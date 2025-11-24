@@ -3,10 +3,10 @@
 import envVars from '@/config/env.config';
 import { cookies } from 'next/headers';
 
-const loginAction = async (payload: FormData) => {
+const loginAction = async (formData: FormData) => {
   try {
-    const email = payload.get('email');
-    const password = payload.get('password');
+    const email = formData.get('email');
+    const password = formData.get('password');
 
     if (!email || !password) {
       return { success: false, message: 'Email and password are required' };
@@ -20,6 +20,7 @@ const loginAction = async (payload: FormData) => {
     });
 
     const result = await response.json();
+    console.log(result);
 
     if (!response.ok) {
       return {

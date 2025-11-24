@@ -1,5 +1,4 @@
 import { poppins } from '@/fonts/GoogleFonts';
-import AosProvider from '@/providers/AosProvider';
 import { AppDataProvider } from '@/providers/AppData';
 import ReduxProvider from '@/providers/ReduxProvider';
 import ThemeProvider from '@/providers/ThemeProvider';
@@ -24,9 +23,7 @@ const RootLayout = ({ children }: IChildren) => {
               enableSystem
               disableTransitionOnChange
             >
-              <AppDataProvider>
-                <AosProvider>{children}</AosProvider>
-              </AppDataProvider>
+              <AppDataProvider>{children}</AppDataProvider>
               <Toaster position="top-right" richColors theme="system" />
             </ThemeProvider>
           </ReduxProvider>
