@@ -1,6 +1,5 @@
 'use client';
 
-import { contactActions } from '@/actions/contact/contact';
 import {
   Form,
   FormControl,
@@ -12,6 +11,7 @@ import {
 import { Input } from '@/components/ui/input';
 import FormSubmitButton from '@/components/ui/submit-button';
 import { Textarea } from '@/components/ui/textarea';
+import { contactActions } from '@/services/contact/contact';
 import { contactFormValidation } from '@/validations/contact';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';

@@ -1,8 +1,8 @@
 'use client';
 
-import { logoutAction } from '@/actions/auth/logout';
 import { Button } from '@/components/ui/button';
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
+import { logoutAction } from '@/services/auth/logout';
 import { LogOut } from 'lucide-react';
 
 const LogoutButton = () => {

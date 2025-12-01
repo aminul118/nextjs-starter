@@ -1,6 +1,5 @@
 'use client';
 
-import { forgotPasswordAction } from '@/actions/auth/forgot-password';
 import Logo from '@/components/layouts/Logo';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -15,6 +14,7 @@ import {
 import { Input } from '@/components/ui/input';
 import SubmitButton from '@/components/ui/submit-button';
 import { cn } from '@/lib/utils';
+import { forgotPasswordAction } from '@/services/auth/forgot-password';
 import { forgotPasswordValidation } from '@/validations/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';

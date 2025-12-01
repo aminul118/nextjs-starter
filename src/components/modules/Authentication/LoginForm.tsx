@@ -1,6 +1,5 @@
 'use client';
 
-import { loginAction } from '@/actions/auth/login';
 import Logo from '@/components/layouts/Logo';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -17,6 +16,7 @@ import Password from '@/components/ui/password';
 import SubmitButton from '@/components/ui/submit-button';
 import images from '@/config/images';
 import { cn } from '@/lib/utils';
+import { loginAction } from '@/services/auth/login';
 import { loginFormValidation } from '@/validations/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Image from 'next/image';

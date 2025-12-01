@@ -1,7 +1,7 @@
 'use server';
 
 import envVars from '@/config/env.config';
-import { cookies } from 'next/headers';
+import { setCookie, verifyToken } from '@/utils/jwt';
 
 const loginAction = async (formData: FormData) => {
   try {
@@ -38,21 +38,22 @@ const loginAction = async (formData: FormData) => {
       };
     }
 
-    const cookieStore = await cookies();
-
-    cookieStore.set('accessToken', accessToken, {
+    await setCookie('accessToken', accessToken, {
       httpOnly: true,
       secure: envVars.nodeEnv === 'production',
       sameSite: 'lax',
       path: '/',
     });
 
-    cookieStore.set('refreshToken', refreshToken, {
+    await setCookie('refreshToken', refreshToken, {
       httpOnly: true,
       secure: envVars.nodeEnv === 'production',
       sameSite: 'lax',
       path: '/',
     });
+
+    const verifiedToken = verifyToken(accessToken);
+    console.log(verifiedToken);
 
     return {
       success: true,
