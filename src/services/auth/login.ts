@@ -1,35 +1,37 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use server';
 
 import envVars from '@/config/env.config';
+import serverFetch from '@/lib/server-fetch';
+import { ApiResponse, IUser } from '@/types';
+import {
+  getDefaultDashboardRoute,
+  isValidRedirectForRole,
+  UserRole,
+} from '@/utils/auth';
 import { setCookie, verifyToken } from '@/utils/jwt';
+import { redirect } from 'next/navigation';
 
-const loginAction = async (formData: FormData) => {
+type UserRes = {
+  accessToken: string;
+  refreshToken: string;
+  user: IUser;
+};
+
+const loginUser = async (_currentState: any, formData: any): Promise<any> => {
   try {
-    const email = formData.get('email');
-    const password = formData.get('password');
+    const redirectTo = formData.get('redirect') || null;
 
-    if (!email || !password) {
-      return { success: false, message: 'Email and password are required' };
-    }
+    const loginData = {
+      email: formData.get('email'),
+      password: formData.get('password'),
+    };
 
-    const response = await fetch(`${envVars.baseUrl}/auth/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-      cache: 'no-store',
+    const res = await serverFetch.post<ApiResponse<UserRes>>('/auth/login', {
+      body: JSON.stringify(loginData),
     });
 
-    const result = await response.json();
-    console.log(result);
-
-    if (!response.ok) {
-      return {
-        success: false,
-        message: result?.message || 'Login failed',
-      };
-    }
-
-    const { accessToken, refreshToken, user } = result.data;
+    const { accessToken, refreshToken } = res.data;
 
     if (!accessToken || !refreshToken) {
       return {
@@ -53,17 +55,32 @@ const loginAction = async (formData: FormData) => {
     });
 
     const verifiedToken = verifyToken(accessToken);
-    console.log(verifiedToken);
+
+    if (typeof verifiedToken === 'string') {
+      return {
+        success: false,
+        message: 'Invalid token',
+      };
+    }
+
+    const userRole: UserRole = verifiedToken.role;
+
+    if (redirectTo) {
+      const requestedPath = redirectTo.toString();
+      if (isValidRedirectForRole(requestedPath, userRole)) {
+        redirect(requestedPath);
+      } else {
+        redirect(getDefaultDashboardRoute(userRole));
+      }
+    }
 
     return {
       success: true,
       message: 'Login successful',
-      role: user.role,
     };
-  } catch (error) {
-    console.log('LOGIN_ERROR:', error);
+  } catch {
     return { success: false, message: 'Something went wrong' };
   }
 };
 
-export { loginAction };
+export { loginUser };
