@@ -1,13 +1,12 @@
 'use client';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import ClearAllFilter from '@/components/common/filtering/ClearAllFilter';
+import RefreshButton from '@/components/common/button/refresh-button';
+import ClearAllFilter from '@/components/common/filtering/ClearFilters';
 import TableSkeleton from '@/components/common/loader/TableSkeleton';
-import AppPagination from '@/components/common/pagination/AppPagination';
-import GoToPage from '@/components/common/pagination/GoToPage';
 import PageLimit from '@/components/common/pagination/PageLimit';
-import PaginationStatus from '@/components/common/pagination/PaginationStatus';
-import AppSearching from '@/components/common/searching/AppSearching';
+import TablePagination from '@/components/common/pagination/TablePagination';
+import SearchFilter from '@/components/common/searching/SearchFilter';
 import Sorting from '@/components/common/sorting/Sorting';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
@@ -23,7 +22,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { useAllUsersInfoQuery } from '@/redux/features/user/user.api';
-import { IMeta, IUser } from '@/types';
+import { IUser } from '@/types';
 import { BadgeCheck } from 'lucide-react';
 import NewUserModal from './NewUserModal';
 import UserActions from './user-actions';
@@ -33,6 +32,7 @@ const UsersTable = ({ props }: { props: Record<string, any> }) => {
     ...props,
   };
   const { data, isLoading } = useAllUsersInfoQuery(params);
+  console.log(data);
 
   if (isLoading) {
     return <TableSkeleton />;
@@ -50,7 +50,7 @@ const UsersTable = ({ props }: { props: Record<string, any> }) => {
       <UsersFilters />
       {/* Main Content */}
       <TableCreate users={users} />
-      <UsersPagination meta={meta} />
+      <TablePagination meta={meta} />
     </Container>
   );
 };
@@ -112,8 +112,9 @@ const UsersFilters = () => {
   return (
     <div className="pb-8">
       <div className="flex items-center justify-between gap-2">
-        <AppSearching />
+        <SearchFilter />
         <div className="flex items-center justify-between gap-2">
+          <RefreshButton variant="outline" />
           <PageLimit pageNumbers={[10, 20, 30, 40]} />
           <Sorting
             sortOptions={[
@@ -121,25 +122,10 @@ const UsersFilters = () => {
               { name: 'Descending', value: 'createdAt' },
             ]}
           />
+
           <ClearAllFilter />
           <NewUserModal />
         </div>
-      </div>
-    </div>
-  );
-};
-
-// Users Pagination
-
-const UsersPagination = ({ meta }: { meta?: IMeta }) => {
-  if (!meta) return null;
-
-  return (
-    <div className="mt-4 flex flex-col items-center gap-4 lg:flex-row lg:justify-between">
-      <GoToPage totalPage={meta.totalPage} />
-      <div className="flex items-center gap-4">
-        <PaginationStatus meta={meta} />
-        <AppPagination className="justify-end" meta={meta} />
       </div>
     </div>
   );

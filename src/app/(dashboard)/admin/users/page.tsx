@@ -1,9 +1,10 @@
-import UsersTable from '@/components/modules/registedUser/UsersTable';
+import UsersTable from '@/components/modules/Admin/user/UsersTable';
 import { ISearchParams } from '@/types';
 import { Metadata } from 'next';
 
 const UsersPage = async ({ searchParams }: ISearchParams) => {
   const resolvedSearchparams = await searchParams;
+
   return <UsersTable props={resolvedSearchparams} />;
 };
 

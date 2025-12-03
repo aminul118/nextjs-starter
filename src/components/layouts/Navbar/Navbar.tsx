@@ -14,7 +14,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
-import { AppDataContext } from '@/context/auth-context';
+import { AppDataContext } from '@/context/AuthContext';
 import { cn } from '@/lib/utils';
 import { BookOpenIcon, Briefcase, InfoIcon, LifeBuoyIcon } from 'lucide-react';
 import Link from 'next/link';

@@ -12,7 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { AppDataContext } from '@/context/auth-context';
+import { AppDataContext } from '@/context/AuthContext';
 import { Role } from '@/types/user.types';
 
 import { UserRound } from 'lucide-react';

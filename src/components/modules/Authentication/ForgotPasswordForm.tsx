@@ -1,5 +1,6 @@
 'use client';
 
+import SubmitButton from '@/components/common/button/submit-button';
 import Logo from '@/components/layouts/Logo';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -12,10 +13,9 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import SubmitButton from '@/components/ui/submit-button';
 import { cn } from '@/lib/utils';
 import { forgotPasswordAction } from '@/services/auth/forgot-password';
-import { forgotPasswordValidation } from '@/validations/auth';
+import { forgotPasswordValidation } from '@/zod/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -80,7 +80,7 @@ const ForgotPasswordForm = ({
                   </FormItem>
                 )}
               />
-              <SubmitButton>Send Reset Email</SubmitButton>
+              <SubmitButton text="Send Reset Email" />
             </form>
           </Form>
 

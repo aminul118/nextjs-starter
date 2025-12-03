@@ -1,4 +1,4 @@
-import { poppins } from '@/fonts/GoogleFonts';
+import { poppins } from '@/config/GoogleFonts';
 import { AppDataProvider } from '@/providers/AppData';
 import ReduxProvider from '@/providers/ReduxProvider';
 import ThemeProvider from '@/providers/ThemeProvider';

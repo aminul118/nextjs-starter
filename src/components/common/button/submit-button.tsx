@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { useFormStatus } from 'react-dom';
-import ButtonSpinner from '../common/loader/ButtonSpinner';
+import ButtonSpinner from '../loader/ButtonSpinner';
 
 interface Props {
   text?: string;

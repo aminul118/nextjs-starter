@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import { FieldDescription } from '../ui/field';
+import { FieldDescription } from '../../ui/field';
 
-type Props = {
+interface FormErrorProps {
   state: any;
   field: string;
-};
+}
 
-const FormError = ({ state, field }: Props) => {
+const FormError = ({ state, field }: FormErrorProps) => {
   // Zod Error Catch
   const getFieldError = () => {
     if (state?.errors) {

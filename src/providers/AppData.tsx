@@ -1,6 +1,6 @@
 'use client';
 
-import { AppDataContext } from '@/context/auth-context';
+import { AppDataContext } from '@/context/AuthContext';
 import { useUserInfoQuery } from '@/redux/features/user/user.api';
 import { IChildren } from '@/types';
 

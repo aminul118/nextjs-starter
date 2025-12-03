@@ -64,7 +64,6 @@ const loginUser = async (_currentState: any, formData: any): Promise<any> => {
     }
 
     const userRole: UserRole = verifiedToken.role;
-
     if (redirectTo) {
       const requestedPath = redirectTo.toString();
       if (isValidRedirectForRole(requestedPath, userRole)) {

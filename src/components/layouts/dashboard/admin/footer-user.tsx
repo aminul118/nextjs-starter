@@ -17,7 +17,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar';
-import { AppDataContext } from '@/context/auth-context';
+import { AppDataContext } from '@/context/AuthContext';
 import { Globe } from 'lucide-react';
 import Link from 'next/link';
 import { useContext } from 'react';

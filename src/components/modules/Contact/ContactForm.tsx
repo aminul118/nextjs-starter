@@ -1,5 +1,6 @@
 'use client';
 
+import FormSubmitButton from '@/components/common/button/submit-button';
 import {
   Form,
   FormControl,
@@ -9,10 +10,9 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import FormSubmitButton from '@/components/ui/submit-button';
 import { Textarea } from '@/components/ui/textarea';
 import { contactActions } from '@/services/contact/contact';
-import { contactFormValidation } from '@/validations/contact';
+import { contactFormValidation } from '@/zod/contact';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -102,7 +102,7 @@ const ContactForm = () => {
             </FormItem>
           )}
         />
-        <FormSubmitButton>Send</FormSubmitButton>
+        <FormSubmitButton text="Send" />
       </form>
     </Form>
   );

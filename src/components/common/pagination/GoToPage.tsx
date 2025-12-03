@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { ButtonGroup } from '@/components/ui/button-group';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
@@ -13,11 +14,7 @@ interface GoToPageProps {
   className?: string;
 }
 
-const GoToPage = ({
-  totalPage,
-  label = 'Page :',
-  className,
-}: GoToPageProps) => {
+const GoToPage = ({ totalPage, label = 'Page', className }: GoToPageProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const currentPage = Number(searchParams.get('page')) || 1;
@@ -56,23 +53,20 @@ const GoToPage = ({
 
   return (
     <div className={cn('hidden items-center gap-3 lg:flex', className)}>
-      <Label className="whitespace-nowrap">{label}</Label>
-      <Input
-        type="number"
-        min={1}
-        max={totalPage}
-        className="w-20"
-        value={value}
-        onChange={(e) => handlePageChange(e.target.value)}
-      />
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={handleGoToPage}
-        disabled={!value}
-      >
-        Go
-      </Button>
+      {label && <Label className="whitespace-nowrap">{label}</Label>}
+      <ButtonGroup>
+        <Input
+          type="number"
+          min={1}
+          max={totalPage}
+          className="w-20"
+          value={value}
+          onChange={(e) => handlePageChange(e.target.value)}
+        />
+        <Button variant="outline" onClick={handleGoToPage} disabled={!value}>
+          Go
+        </Button>
+      </ButtonGroup>
       {error && (
         <p className="text-xs whitespace-nowrap text-red-500">{error}</p>
       )}

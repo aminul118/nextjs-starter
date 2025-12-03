@@ -1,10 +1,10 @@
 'use client';
 
-import FormError from '@/components/common/FormError';
+import SubmitButton from '@/components/common/button/submit-button';
+import FormError from '@/components/common/error/FormError';
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import Password from '@/components/ui/password';
-import SubmitButton from '@/components/ui/submit-button';
 import useSearchParamsValues from '@/hooks/useSearchParamsValues';
 import { loginUser } from '@/services/auth/login';
 
