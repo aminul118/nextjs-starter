@@ -26,9 +26,9 @@ const FetchError = ({
   return (
     <Container className="center-content flex flex-col items-center justify-center py-20 text-center">
       {Icon ? (
-        <Icon className="text-muted-foreground h-16 w-16" />
+        <Icon size={16} className="text-muted-foreground" />
       ) : (
-        <Frown className="text-muted-foreground h-16 w-16" />
+        <Frown size={16} className="text-muted-foreground" />
       )}
 
       <h1 className="mt-6 text-2xl font-bold tracking-tight">{title}</h1>

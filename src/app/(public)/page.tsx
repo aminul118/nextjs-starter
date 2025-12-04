@@ -1,4 +1,4 @@
-import Contact from '@/components/modules/Contact/Contact';
+import Contact from '@/components/modules/Root/contact/Contact';
 import generateMetaTags from '@/seo/generateMetaTags';
 import { Metadata } from 'next';
 

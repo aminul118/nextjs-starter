@@ -12,8 +12,8 @@ import {
 } from '@/components/ui/alert-dialog';
 import { Trash2 } from 'lucide-react';
 import { toast } from 'sonner';
-import Tooltip from '../common/Tooltip';
-import { Button } from '../ui/button';
+import { Button } from '../../ui/button';
+import Tooltip from '../Tooltip';
 
 interface IDeleteResponse {
   success: boolean;
